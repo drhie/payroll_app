@@ -8,7 +8,7 @@ class TimeReportsController < ApplicationController
     else
       flash[:errors] = time_report.errors.full_messages
     end
-    redirect_to payroll_reports_url
+    redirect_to root_url
   end
 
   private

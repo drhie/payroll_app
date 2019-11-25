@@ -2,23 +2,38 @@
 <%= render partial: "layouts/notifications" %>
 
 <h2>Upload Time Reports</h2>
-<div>
-  <%= form_with(url: "/time_reports", method: "post", multipart: true) do |f| %>
-    <%= f.fields_for :time_report do |ff| %>
-      <%= ff.file_field :csv_file %>
+<div class="wrapper">
+  <div class="csv-form">
+    <%= form_with(url: "/time_reports", method: "post", multipart: true) do |f| %>
+      <div class="field">
+        <%= f.fields_for :time_report do |ff| %>
+          <%= ff.file_field :csv_file, required: true%>
+        <% end %>
+      </div>
     <% end %>
-    <%= submit_tag("Upload") %>
-  <% end %>
+  </div>
 </div>
 
 <h2>View Payroll Reports</h2>
-<table>
-  <th>Employee Id</th>
-  <th>Pay Period</th>
-  <th>Amount Paid</th>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
+<div class="wrapper">
+  <% if @report.any? %>
+    <table class="payroll-report-table">
+      <th>Employee Id</th>
+      <th>Pay Period</th>
+      <th>Amount Paid</th>
+      <% @report.each do |employee_id, pay_details| %>
+        <% pay_details.each do |period, amount_paid| %>
+          <tr>
+            <td class="employee-id"><%= employee_id %></td>
+            <td class="payment-period"><%= "#{period.first.strftime('%-d/%m/%Y')} - #{period.last.strftime('%-d/%m/%Y')}" %></td>
+            <td class="amount-paid">$<%= number_with_precision(amount_paid, precision: 2) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  <% else %>
+    <p>
+      It looks like you don't have any payroll reports.<br/>Please upload a time report using the form above.
+    </p>
+  <% end %>
+</div>

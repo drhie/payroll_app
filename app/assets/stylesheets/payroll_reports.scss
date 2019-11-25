@@ -1,0 +1,105 @@
+// Place all the styles related to the payroll_reports controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$light-border: 1px solid #d3d3d3;
+$accent-bg: #136acd;
+
+body {
+  font-family: 'Assistant', Verdana, sans-serif;
+}
+
+h1, h2 {
+  text-align: center;
+}
+h1 {
+  margin-bottom: 5px;
+}
+h2 {
+  margin-bottom: 0px;
+  background-color: #fff;
+}
+
+.message {
+  padding: 10px 15px;
+  width: 458px;
+  margin: auto;
+  border-radius: 4px;
+  text-align: center;
+  p {
+    margin: 0;
+  }
+  ul {
+    display: inline-block;
+    min-width: 292px;
+    margin: 0;
+  }
+  li {
+    text-align: left;
+  }
+}
+
+.success {
+  background: #5ffcb8;
+  border: 1px solid #4ac48f;
+}
+
+.error {
+  background: #ffafaf;
+  border: 1px solid #e87171;
+}
+
+.wrapper {
+  width: 500px;
+  margin: auto;
+  text-align: center;
+  padding: 8px 25px;
+  border: $light-border;
+  border-radius: 4px;
+}
+
+
+.csv-form {
+  text-align: center;
+
+  input[type=submit] {
+    border: $light-border;
+    padding: 5px 10px;
+    background: $accent-bg;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 3rem;
+    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+    padding: .69rem 1.5rem;
+    cursor: pointer;
+  }
+  input[type=submit]:hover {
+    background-color: #1058aa;
+    border-color: #0f529e;
+  }
+}
+
+.payroll-report-table {
+  margin: auto;
+  border-collapse: collapse;
+  tr:nth-child(2n) {
+    background: #f4f4f4;
+  }
+
+  th {
+    background: $accent-bg;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  th, td {
+    padding: 5px 10px;
+    border: $light-border;
+  }
+
+  .employee-id {
+    text-align: right;
+  }
+  .payment-period {
+    text-align: center;
+  }
+}
