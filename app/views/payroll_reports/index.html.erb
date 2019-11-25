@@ -9,6 +9,7 @@
         <%= f.fields_for :time_report do |ff| %>
           <%= ff.file_field :csv_file, required: true%>
         <% end %>
+        <%= submit_tag("Upload") %>
       </div>
     <% end %>
   </div>
@@ -21,14 +22,12 @@
       <th>Employee Id</th>
       <th>Pay Period</th>
       <th>Amount Paid</th>
-      <% @report.each do |employee_id, pay_details| %>
-        <% pay_details.each do |period, amount_paid| %>
-          <tr>
-            <td class="employee-id"><%= employee_id %></td>
-            <td class="payment-period"><%= "#{period.first.strftime('%-d/%m/%Y')} - #{period.last.strftime('%-d/%m/%Y')}" %></td>
-            <td class="amount-paid">$<%= number_with_precision(amount_paid, precision: 2) %></td>
-          </tr>
-        <% end %>
+      <% report_table_contents(@report).each do |row| %>
+        <tr>
+          <td class="employee-id"><%= row[:employee_id] %></td>
+          <td class="payment-period"><%= row[:payment_period] %></td>
+          <td class="amount-paid">$<%= row[:amount_paid] %></td>
+        </tr>
       <% end %>
     </table>
   <% else %>
