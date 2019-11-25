@@ -1,0 +1,16 @@
+<% if flash[:success].present? %>
+  <div class="message">
+    <p><%= flash[:success] %></p>
+  </div>
+<% end %>
+
+<% if flash[:errors].present? %>
+  <div class="message">
+    <p>Your upload failed for the following reasons:</p>
+    <ul>
+      <% flash[:errors].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

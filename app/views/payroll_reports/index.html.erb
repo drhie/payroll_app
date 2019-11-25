@@ -1,0 +1,24 @@
+<h1>Payroll Dashboard</h1>
+<%= render partial: "layouts/notifications" %>
+
+<h2>Upload Time Reports</h2>
+<div>
+  <%= form_with(url: "/time_reports", method: "post", multipart: true) do |f| %>
+    <%= f.fields_for :time_report do |ff| %>
+      <%= ff.file_field :csv_file %>
+    <% end %>
+    <%= submit_tag("Upload") %>
+  <% end %>
+</div>
+
+<h2>View Payroll Reports</h2>
+<table>
+  <th>Employee Id</th>
+  <th>Pay Period</th>
+  <th>Amount Paid</th>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
