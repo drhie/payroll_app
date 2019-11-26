@@ -42,6 +42,16 @@ RSpec.describe CsvParser do
       it 'has the footer contained inside a hash' do
         expect(subject.footer).to be_a(Hash)
       end
+
+      context 'when csv has no data' do
+        let(:file) { file_fixture("empty_sample.csv") }
+
+        it 'responds to rows with an empty array' do
+          expect(subject).to respond_to(:rows)
+          expect(subject.rows).to be_an(Array)
+          expect(subject.rows).to be_empty
+        end
+      end
     end
   end
 end
