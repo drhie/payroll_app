@@ -1,3 +1,5 @@
+##
+# This class manages the individual entries of a time report.
 class TimeEntry < ApplicationRecord
   belongs_to :time_report
   validates :date,

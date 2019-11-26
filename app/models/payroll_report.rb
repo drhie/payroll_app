@@ -1,7 +1,9 @@
 # NOTE TO FUTURE DEVELOPERS: This class is highly vulnerable to change based on future requirements.
 # Due to a dependency injection upon initialization, it is closely coupled to the TimeEntry class.
-# As there is no current requirement for multiple payroll reports, this class does not have a table.
+# As there is no current requirement for multiple payroll reports, this class currently does not have a table.
 
+##
+# This class generates a payroll report based on all time entries.
 class PayrollReport
   attr_accessor :time_entries
 

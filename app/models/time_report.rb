@@ -1,5 +1,7 @@
 require_relative 'modules/csv_parser.rb'
 
+##
+# This class archives unique time reports.
 class TimeReport < ApplicationRecord
 	has_many :time_entries
   validates_uniqueness_of :report_id

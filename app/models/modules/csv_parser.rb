@@ -1,3 +1,5 @@
+##
+# This module provides behavior for parsing CSV data
 module CsvParser
   require 'csv'
 
