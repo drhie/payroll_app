@@ -8,7 +8,7 @@ RSpec.describe PayrollReport, type: :model do
     subject { target.generate_report }
 
     context 'when time entries exist' do
-      let(:employee_ids) { [1, 2, 3, 4] }
+      let(:employee_ids) { ['1', '2', '3', '4'] }
 
       let(:time_entries) do
         employee_ids.map do |id|
@@ -25,7 +25,7 @@ RSpec.describe PayrollReport, type: :model do
         expect(subject.keys).to eq(employee_ids)
       end
 
-      it 'is subsequently grouped by pay period' do
+      it 'holds paid amounts grouped by pay period' do
         subject.values.each do |item|
           expect(item.keys).to all( be_a(Range) )
           expect(item.values).to all( be_a(Float) )

@@ -22,7 +22,7 @@ RSpec.describe TimeEntry, type: :model do
     end
 
     context 'when job_group is invalid' do
-      it' does not add any calculation' do
+      it' does not add any calculation (0)' do
         target.job_group = 'C'
         expect(subject).to eq(0.0)
       end
@@ -52,12 +52,12 @@ RSpec.describe TimeEntry, type: :model do
         expect(subject).to be_a(Hash)
       end
 
-      it 'returns employee_ids as keys and array of TimeEntries as values' do
+      it 'returns employee_ids as keys and an array as values' do
         expect(subject.keys).to eq(employee_ids)
         expect(subject.values).to be_an(Array)
       end
 
-      it 'returns TimeEntries as values' do
+      it 'contains time entries within those array values' do
         expect(subject.values.flatten).to all( be_a_kind_of(TimeEntry) )
       end
     end
